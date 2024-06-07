@@ -1,3 +1,7 @@
 # Store your group variables for external systems here
 # If you have roles calling out to external systems, it's best to keep them in a seperate inventory
 
+external_dns_records:
+  - name: "test.example.com"
+    type: A
+    value: "10.71.20.30"

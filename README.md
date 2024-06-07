@@ -15,6 +15,16 @@ Ansible best practice suggests an Ansible Project repository and separate reposi
 
 `Ansible Playbooks` should be very short and simple - they define **WHERE** and **WHAT**. `Ansible Roles` should be environment-agnostic and answer **HOW**. Therefore they should be built independently from the Ansible Project repository. This allows **any** Ansible Playbook to use the Ansible Role and run the tasks against **any** environment. The overall goal for Ansible Roles should be a reusable, encapsulated, and environment-agnostic object.
 
+This repository provides both a "role template" and a template for your project. 
+
+## Ansible Community - Automation Good Practices 
+
+The Community of Practice for Ansible from RedHat has it's own [Good Practices for Ansible - GPA](https://redhat-cop.github.io/automation-good-practices/). It's much more detailed than this project and provides you with information about more specific questions. 
+
+## Version Control 
+
+Managing multiple environments in Ansible can be handled within a single Git repository or across multiple repositories, depending on various factors such as complexity, team structure, and project requirements. Try to structure environments based on the technology stack and access rights of the persons working on the projects. Changes in one environment won't inadvertently affect others, reducing the risk of deployment issues. If different teams are responsible for different environments, having separate repositories can align with team boundaries and responsibilities. Different repositories allow finer-grained access control, ensuring that only authorized personnel can make changes to sensitive environments like production.
+
 ## Development 
 
 You should write YAML-Files in an Text-Editor like VSCode. Please use proper Syntax Highlighting and format your code via 'ansible-linter' 
@@ -150,6 +160,11 @@ ansible-invenory -i inventory --list
 ```
 
 Ensure you do not see any warning messages and you see the desired output. Variables should be assigned to hosts and group names should be listed appropriately under the right parent groups and so on.
+
+## Open Topics
+
+We are welcoming contributions to this template, some open topics are: 
+- Unit-Testing via GitlabCI, providing some example workflows. 
 
 ## References
 

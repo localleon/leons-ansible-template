@@ -16,3 +16,5 @@ network_connections:
       dns_search:
         - example.com
     state: up
+
+search_domain: "company.net"

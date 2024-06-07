@@ -1,0 +1,18 @@
+# Store your group variables here
+network_connections:
+  - name: enp1s0
+    interface_name: enp1s0
+    type: ethernet
+    autoconnect: yes
+    ip:
+      address:
+        # If you need to change bigger structures like network config or lvms, but the overall structure stays the same over multiple hosts, use YAML templating and get the single values from host vars:
+        - "{{ ip1 }}"
+      gateway4: 192.0.2.254
+      gateway6: 2001:db8:1::fffe
+      dns:
+        - 192.0.2.200
+        - 2001:db8:1::ffbb
+      dns_search:
+        - example.com
+    state: up

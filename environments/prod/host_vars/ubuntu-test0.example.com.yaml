@@ -1,0 +1,5 @@
+# Try to store only host specific stuff here.
+
+# If you need to change bigger structures like network config or lvms, but the overall structure stays the same over multiple hosts, use YAML templating:
+ip1: "10.71.20.43/24"
+

@@ -1,0 +1,17 @@
+# gitignore settings
+
+*.retry
+
+# whitelist requirements.yml and any included yml files
+!*.galaxy/*.yml
+# blacklist everything else
+galaxy/*
+
+# python compiled files
+*.pyc
+
+# pyenv configuration
+.python-version
+
+# exclude log files
+*.log

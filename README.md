@@ -70,6 +70,8 @@ Whenever possible, use prefabricated roles from internal teams or external certi
 - [rhel-system-roles (Standard tasks by RedHat)](https://access.redhat.com/documentation/pa/red_hat_enterprise_linux/8/html/automating_system_administration_by_using_rhel_system_roles/intro-to-rhel-system-roles_automating-system-administration-by-using-rhel-system-roles)
 - [RedHat Automation Hub](https://www.redhat.com/de/technologies/management/ansible/automation-hub)
 
+Browse your local Source-Code repositorys for roles from other teams that might fit your use-case! 
+
 ## Gathering Facts
 
 It is best practice to change the default setting in `ansible.cfg` from using `implicit` gathering to `explicit`. This forces developers to explicitly state that facts need to be gathered for particular hosts, otherwise it can result in unwanted fact gathering tasks that consume time.

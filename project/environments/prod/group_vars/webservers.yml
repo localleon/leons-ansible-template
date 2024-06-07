@@ -1,0 +1,9 @@
+# Store your group variables here
+# Seperate group_variables by application type
+
+application_setting: "42"
+
+# Use filters where necessary to manipulate data
+current_date: "{{ ansible_date_time.date }}" # Define the current date using Ansible's `ansible_date_time` fact
+
+webserver_port: 8080

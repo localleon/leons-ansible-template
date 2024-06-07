@@ -1,5 +1,5 @@
 # Store your group variables here
-environment_name: production # use a common variable to template your enviornment name in Roles
+environment_name: development # use a common variable to template your enviornment name in Roles
 
 network_connections:
   - name: enp1s0

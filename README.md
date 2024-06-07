@@ -1,5 +1,6 @@
-# leons-ansible-template
-Template for building small and large Ansible projects
+# Leon's Ansible Template (Best Practices)
+
+Template for building small and large Ansible projects. This is my opinion, feedback and improvements are welcome! 
 
 ## Intro
 

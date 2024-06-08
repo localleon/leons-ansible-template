@@ -1,0 +1,8 @@
+- name: Update system packages
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure all packages are up to date
+      dnf:
+        name: "*"
+        state: latest

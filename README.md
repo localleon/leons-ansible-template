@@ -18,6 +18,16 @@ Ansible best practice suggests an Ansible Project repository and separate reposi
 
 This repository provides both a "role template" and a template for your project. 
 
+## Included sections in this repository
+
+We have the following content in this repository: 
+- [Read more about how to structure roles in roles/Roles.md](roles/Roles.md)
+- [Learn about inventorys and structuring your projects in project/Projects.md](project/Projects.md)
+- [Get to know the concept of Node-Playbooks under project/node_playbooks/node_playbooks.md](project/node_playbooks/node_playbooks.md)
+- [See when single playbooks are a good solution with project/single_playbooks/single_playbooks.md](project/single_playbooks/single_playbooks.md)
+- [Learn where to store files in your repository by reading project/node_playbooks/files/FILES.md](project/node_playbooks/files/FILES.md)
+- [What belongs to a good inventory under project/environments/prod/Environments.md](project/environments/prod/Environments.md)
+
 ## Ansible Community - Automation Good Practices 
 
 The Community of Practice for Ansible from RedHat has it's own [Good Practices for Ansible - GPA](https://redhat-cop.github.io/automation-good-practices/). It's much more detailed than this project and provides you with information about more specific questions. 
@@ -37,43 +47,6 @@ You should write YAML-Files in an Text-Editor like VSCode. Please use proper Syn
   - Adjust the lint rules by creating `.ansible-lint` configuration file in your repository
   - It requires using `skip_list` otherwise you'll still see red-marked issues in your editor window
   - `ansible-lint` will leverage the `.yamllint.yml` configuration file to additionally check the yaml rules
-
-## Ansible Roles and Collections
-
-In this repo the `requirements.yml` file will be used to define our Ansible Role **dependencies** that are used by our Ansible Playbooks. Additionally, you can use `include:` statements inside your requirements file to break apart the dependencies by whatever means you wish. For example, each file can represent a specific application or business vertical.
-
-When testing playbooks on a terminal, you must manually perform the `ansible-galaxy` command to install the dependent Ansible Roles into the `roles` folder. This can be achieved using the following command:
-
-```bash
-# download ansible roles
-ansible-galaxy role install -r galaxy/requirements.yml
-```
-
-For quickly developing roles and you don't to do the whole "ansible-galaxy" loop over and over again, consider using a temporary full-path in your playbook like: 
-
-```yaml
----
-- hosts: all
-  become: true
-  become_method: sudo
-  gather_facts: true
-  vars:
-  roles:
-    - name: /home/lraus/./ansible/roles/sth.gitlab-runner
-      tags: sth.gitlab-runner
-```
-
-Multiple roles can be installed by listing them in the `requirements.yml` file. The format of the file is YAML, and the file extension must be either .yml or .yaml.
-- [Installing Multiple Roles From a File](https://galaxy.ansible.com/docs/using/installing.html#installing-multiple-roles-from-a-file)
-
-Look into namespaces if you and your team are writing Ansible roles. Consider creating a naming-convention and namespace for your team: 
-- https://old-galaxy.ansible.com/docs/contributing/namespaces.html
-
-Whenever possible, use prefabricated roles from internal teams or external certified content. Refer to the following resources: 
-- [rhel-system-roles (Standard tasks by RedHat)](https://access.redhat.com/documentation/pa/red_hat_enterprise_linux/8/html/automating_system_administration_by_using_rhel_system_roles/intro-to-rhel-system-roles_automating-system-administration-by-using-rhel-system-roles)
-- [RedHat Automation Hub](https://www.redhat.com/de/technologies/management/ansible/automation-hub)
-
-Browse your local Source-Code repositorys for roles from other teams that might fit your use-case! 
 
 ## Gathering Facts
 
@@ -151,30 +124,6 @@ Another linting tool that is quite helpful is the YAML Lint tool.
 
 Refer to (Molecule)[https://ansible.readthedocs.io/projects/molecule/] on how to get started with Unit-Testing your Ansible roles.
 
-## Inventory
-
-### Multi-Stages and Multi-Platforms
-
-To address the challenge of managing multi-stage environments with Ansible, it is recommended read through the following resources. This applies to situation where you have multiple stages (dev, test, and prod) as well as when you have multiple platforms (AWX, Google Cloud, Azure, VmWare, etc) that have their own multiple stages (dev, test, prod). No matter the situation it is important to establish a good inventory structure so you can manage your configuration (vars) appropriately.
-
-- [How to Manage Multistage Environments with Ansible](https://www.digitalocean.com/community/tutorials/how-to-manage-multistage-environments-with-ansible).
-- [Managing multiple environments with Ansible - best practices](https://rock-it.pl/managing-multiple-environments-with-ansible-best-practices/)
-- [Ansible Playbook Structure](http://www.oznetnerd.com/ansible-playbook-structure/)
-- [Ansible: Directory Layout](https://dev.to/tmidi/ansible-directory-layout-5edj)
-
-In this repository there are two examples of inventory structures. You may choose either one for your purposes. Ansible Inventories can be constructed using either `folders` or groups or both. In the first example `hostsv1` only folders and symbolic links are used along with multiple inventory files. In the second example `hostsv2` only groups are used in a single inventory file.
-
-### Testing the Inventory
-
-Before you decide on your final inventory structure be sure to test it out. Use the `ansible-inventory` command to determine the output when Ansible reads your inventory structure.
-
-Navigate to an `inventory` file and run the following command:
-```
-ansible-invenory -i inventory --list
-```
-
-Ensure you do not see any warning messages and you see the desired output. Variables should be assigned to hosts and group names should be listed appropriately under the right parent groups and so on.
-
 ## Open Topics
 
 We are welcoming contributions to this template, some open topics are: 
@@ -191,4 +140,4 @@ MIT
 
 ## Author 
 
-Leon Rauschenbach 
+Leon 

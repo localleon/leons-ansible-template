@@ -6,3 +6,5 @@
       dnf:
         name: "*"
         state: latest
+
+# These playbooks should be short and only be used for one-time-actions. Don't build any complexe logic here! 

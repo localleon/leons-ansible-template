@@ -32,7 +32,7 @@ roles/
     └── README.md
 ```
 
-## Example Scenario: Setting Up a Web Server
+###  Example Scenario: Setting Up a Web Server
 Suppose you need to set up a web server, which involves:
 
 - Installing the web server package.
@@ -43,3 +43,25 @@ Suppose you need to set up a web server, which involves:
 - Creating a role named webserver can encapsulate all these tasks and provide a clean, reusable structure.
 
 Creating a role is the right approach when dealing with complex, reusable, and multi-step tasks. It promotes better organization, reusability, and maintainability of your playbooks. If your task meets any of the above criteria, consider creating a role to encapsulate it. This will lead to a more scalable and manageable Ansible setup. 
+
+## Writing Roles: 
+
+### Adhere to best practices
+
+Try to keep to the following best practices: 
+- https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#role-directory-structure
+- https://redhat-cop.github.io/automation-good-practices/#_roles_good_practices_for_ansible
+- https://www.golinuxcloud.com/create-ansible-role-with-example-playbooks/
+- https://www.digitalocean.com/community/tutorials/how-to-use-ansible-roles-to-abstract-your-infrastructure-environment
+
+### Role Variables 
+
+If you are creating role-variables, only publish relevant variables in the `defaults/main.yml` and keep internal variables in `vars/main.yml`
+
+[Vars vs defaults](https://redhat-cop.github.io/automation-good-practices/#_vars_vs_defaults)
+
+### Role Dependencies 
+
+Role dependencies are prerequisites, not true dependencies. The roles do not have a parent/child relationship. Ansible loads all listed roles, runs the roles listed under dependencies first, then runs the role that lists them. The play object is the parent of all roles, including roles called by a dependencies list.
+
+[Dependencies](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-role-dependencies)

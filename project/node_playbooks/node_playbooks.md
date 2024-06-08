@@ -30,7 +30,7 @@ Let's assume we have a common structure for different environments (development,
 │   │   ├── node_playbooks.md
 ```
 
-playbooks/webserver.yml
+node_playbooks/webserver.yml
 ```yaml
 ---
 - name: Configure webserver nodes
@@ -39,7 +39,7 @@ playbooks/webserver.yml
     - webserver
 ```
 
-playbooks/dbserver.yml
+node_playbooks/dbserver.yml
 ```yaml
 ---
 - name: Configure dbserver nodes
@@ -67,3 +67,30 @@ ansible-playbook -i inventory/production playbooks/dbserver.yml
 ```
 
 This setup demonstrates how node playbooks include only roles and use variables to control environment-specific configurations. This approach helps maintain a clean and scalable Ansible structure, making it easy to manage different environments and types of hosts.
+
+## Tags
+
+You can use tags to control which parts of a playbook should be run. 
+
+```yaml
+---
+- name: Configure dbserver nodes
+  hosts: dbservers
+  roles:
+    - name: dbserver
+      tag: dbserver 
+    - name: user
+      tag: user 
+```
+
+This will only run the user role.
+```bash
+ansible-playbook -i inventory/production playbooks/dbserver.yml -t user 
+```
+
+Only use tags in top-level-playbooks e.g your node-playbooks. Tags are not always transitive, e.g if you use tags in roles and then control the execution of the role via tag weird things happen. There are also special tags which are sometimes helpful [e.g always and never](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html#always-and-never)!
+
+## Master Playbook. 
+
+Take a look into `node_playbooks/site.yml` to see how to run tasks across different environments. You can use a master-playbook to include all other playbooks if you want to run roles on all node-types. Then control which parts of the playbook run with tags! [See the tag documentation!](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html)
+

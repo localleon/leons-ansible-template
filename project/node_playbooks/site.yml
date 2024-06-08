@@ -1,5 +1,15 @@
----
-- hosts: all
-  gather_facts: true
+--- 
 
+# You can use a master-playbook to include all other playbooks if you want to run roles on all node-types. The control which parts run with tags
+- name: Master Playbook
+  hosts: all
+  gather_facts: yes
   tasks:
+    - name: Include Webserver Playbook
+      import_playbook: webserver.yml
+
+    - name: Include DBServer Playbook
+      import_playbook: dbserver.yml
+
+
+## e.g use ansible-playbook -i inventory/production playbooks/site.yml -t sth.user

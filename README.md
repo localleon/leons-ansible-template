@@ -64,8 +64,10 @@ For quickly developing roles and you don't to do the whole "ansible-galaxy" loop
 ```
 
 Multiple roles can be installed by listing them in the `requirements.yml` file. The format of the file is YAML, and the file extension must be either .yml or .yaml.
+- [Installing Multiple Roles From a File](https://galaxy.ansible.com/docs/using/installing.html#installing-multiple-roles-from-a-file)
 
-[Installing Multiple Roles From a File](https://galaxy.ansible.com/docs/using/installing.html#installing-multiple-roles-from-a-file)
+Look into namespaces if you and your team are writing Ansible roles. Consider creating a naming-convention and namespace for your team: 
+- https://old-galaxy.ansible.com/docs/contributing/namespaces.html
 
 Whenever possible, use prefabricated roles from internal teams or external certified content. Refer to the following resources: 
 - [rhel-system-roles (Standard tasks by RedHat)](https://access.redhat.com/documentation/pa/red_hat_enterprise_linux/8/html/automating_system_administration_by_using_rhel_system_roles/intro-to-rhel-system-roles_automating-system-administration-by-using-rhel-system-roles)
@@ -99,6 +101,15 @@ Some common filter functions:
 - [unique](http://jinja.pocoo.org/docs/2.10/templates/#unique)
 - [undefined](http://jinja.pocoo.org/docs/2.10/templates/#undefined)
 - [mandatory](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#forcing-variables-to-be-defined)
+
+### Naming Conventions
+
+We don't differ in our naming between group_vars and host_vars. Try to create precise names and think about possible collisions. If you are writing roles, always prefix your roles with something about the role name e.g 
+```yaml
+
+rolename_tls_verify: true 
+rolename_application_name: "johannes"
+```
 
 ### Group Variables
 

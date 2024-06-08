@@ -1,9 +1,0 @@
----
-- hosts: all
-  become: true
-  roles:
-    # Application Specifc Configuraiton
-    - role: anxs.fail2ban
-      tags: security
-    - role: xanmanning.k3s
-      tags: cluster

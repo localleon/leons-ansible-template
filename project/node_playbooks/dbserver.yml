@@ -1,0 +1,9 @@
+- name: Configure dbserver nodes
+  hosts: dbservers
+  roles:
+    # Include some common base roles that are used for all node types e.g usermanagement
+    - name: sth.user
+      tags: sth.user #always use the rolename as tag
+    # Include the node-type specifc roles 
+    - name: sth.dbserver
+      tags: sth.dbserver

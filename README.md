@@ -120,6 +120,15 @@ https://docs.ansible.com/ansible-lint/rules/rules.html#creating-custom-rules
 
 Another linting tool that is quite helpful is the YAML Lint tool.
 
+### Scanning for leaked secrets
+
+You can use projects like [Gitleaks](https://github.com/gitleaks/gitleaks) to check your repository for exposed secrets. The tool can also be run via Gitlab-CI: 
+
+```bash
+podman pull ghcr.io/gitleaks/gitleaks:latest
+podman run -v ./:/path ghcr.io/gitleaks/gitleaks:latest detect --source="/path"
+```
+
 ### Testing
 
 Refer to (Molecule)[https://ansible.readthedocs.io/projects/molecule/] on how to get started with Unit-Testing your Ansible roles.

@@ -4,7 +4,7 @@ There are some common practices on how to store files in Ansible!
 
 ## Storing files in the repository 
 
-It's fine to store text-files in the repository. You should however, never commit larger binary files to Git. These stay in your history forever and bloat up the repository size. Files like "X509-CA-Certificates" or configuration files are fine to store! 
+It's fine to store text-files in the repository. You should however, never commit larger binary files to Git. These stay in your history forever and bloat up the repository size. Files like "X509-CA-Certificates" or configuration files are fine to store! Text files which don't contain any sensitive information like [project/node_playbooks/files/DigiCert_Global_Root_G2.crt](project/node_playbooks/files/DigiCert_Global_Root_G2.crt) are fine. Never store your private certificates unencrypted! 
 
 ## Storing large files 
 
